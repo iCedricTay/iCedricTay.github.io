@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cedric Tay Portfolio</title>
+  <meta name="description" content="Cedric Tay — developer building practical digital products across web, app, and technical operations." />
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=zodiak@400,700&display=swap" rel="stylesheet" />
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(12px, 11px + 0.25vw, 14px);
+      --text-sm: clamp(14px, 13px + 0.35vw, 16px);
+      --text-base: clamp(16px, 15px + 0.25vw, 18px);
+      --text-lg: clamp(18px, 16px + 0.75vw, 24px);
+      --text-xl: clamp(24px, 20px + 1.25vw, 36px);
+      --text-2xl: clamp(32px, 22px + 2.5vw, 56px);
+      --text-hero: clamp(40px, 26px + 3.5vw, 72px);
+      --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px; --space-12: 48px; --space-16: 64px; --space-24: 96px; --space-32: 128px;
+      --color-bg: #f7f6f2; --color-surface: #f9f8f5; --color-surface-2: #fbfbf9; --color-surface-offset: #efede8; --color-divider: #dcd9d5; --color-border: rgba(40, 37, 29, 0.12); --color-text: #28251d; --color-text-muted: #706f69; --color-text-faint: #a8a59f; --color-text-inverse: #f9f8f4; --color-primary: #01696f; --color-primary-hover: #0c4e54; --shadow-sm: 0 1px 2px rgba(34, 30, 20, 0.06); --shadow-md: 0 10px 30px rgba(34, 30, 20, 0.08); --radius-sm: 0.375rem; --radius-lg: 16px; --radius-xl: 24px; --radius-full: 999px; --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1); --content-default: 1100px; --font-display: 'Zodiak', Georgia, serif; --font-body: 'Satoshi', Inter, sans-serif;
+    }
+    [data-theme="dark"] {
+      --color-bg: #151412; --color-surface: #1c1b19; --color-surface-2: #23211f; --color-surface-offset: #2b2926; --color-divider: #2e2c29; --color-border: rgba(240, 236, 228, 0.11); --color-text: #e3dfd7; --color-text-muted: #a7a196; --color-text-faint: #6f6a62; --color-text-inverse: #1c1b19; --color-primary: #5aa0aa; --color-primary-hover: #79b8bf; --shadow-sm: 0 1px 2px rgba(0,0,0,0.22); --shadow-md: 0 14px 36px rgba(0,0,0,0.35);
+    }
+    * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    body { min-height: 100dvh; font-family: var(--font-body); font-size: var(--text-base); line-height: 1.6; color: var(--color-text); background: radial-gradient(circle at top left, color-mix(in srgb, var(--color-primary) 10%, transparent) 0%, transparent 30%), var(--color-bg); }
+    a { color: inherit; text-decoration: none; } button { font: inherit; border: 0; background: none; color: inherit; cursor: pointer; }
+    .skip-link { position: absolute; left: 16px; top: -48px; background: var(--color-primary); color: var(--color-text-inverse); padding: 8px 16px; border-radius: 999px; z-index: 99; } .skip-link:focus { top: 16px; }
+    .container { width: min(calc(100% - 32px), var(--content-default)); margin-inline: auto; }
+    .header { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(14px); background: color-mix(in srgb, var(--color-bg) 84%, transparent); border-bottom: 1px solid transparent; }
+    .header.scrolled { border-color: var(--color-border); }
+    .nav { display: flex; align-items: center; justify-content: space-between; min-height: 4.5rem; gap: 16px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; font-size: var(--text-sm); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+    .brand svg { width: 1.9rem; height: 1.9rem; }
+    .nav-links { display: flex; align-items: center; gap: 20px; }
+    .nav-links a { font-size: var(--text-sm); color: var(--color-text-muted); }
+    .theme-toggle, .menu-toggle { width: 2.75rem; height: 2.75rem; display: inline-grid; place-items: center; border-radius: 999px; border: 1px solid var(--color-border); background: var(--color-surface); }
+    .menu-toggle { display: none; }
+    .hero { min-height: 72vh; display: grid; align-items: center; padding-block: clamp(var(--space-16), 7vw, var(--space-24)) var(--space-12); }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 24px; align-items: start; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; background: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface)); color: var(--color-primary); font-size: var(--text-xs); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; margin-bottom: 20px; }
+    h1 { font-family: var(--font-display); font-size: clamp(30px, 20px + 1.8vw, 44px); line-height: 1.02; letter-spacing: -0.03em; max-width: 11ch; margin-bottom: 20px; }
+    .hero-copy p { max-width: 38ch; color: var(--color-text-muted); margin-bottom: 32px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; border-radius: 999px; font-size: var(--text-sm); font-weight: 700; }
+    .button.primary { background: var(--color-primary); color: var(--color-text-inverse); }
+    .button.secondary { border: 1px solid var(--color-border); background: var(--color-surface); }
+    .hero-panel, .about-card, .contact-card, .project-card, .timeline-item { border: 1px solid var(--color-border); border-radius: var(--radius-xl); background: var(--color-surface); box-shadow: var(--shadow-sm); }
+    .hero-panel { padding: 32px; display: grid; gap: 24px; box-shadow: var(--shadow-md); background: linear-gradient(180deg, var(--color-surface-2), var(--color-surface)); }
+    .hero-panel-top, .project-top, .timeline-top { display: flex; justify-content: space-between; gap: 16px; align-items: start; flex-wrap: wrap; }
+    .meta-label, .label, .project-type { font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.08em; }
+    .meta-label, .label { color: var(--color-text-faint); }
+    .project-type { color: var(--color-primary); font-weight: 700; }
+    .meta-value { font-size: 20px; font-weight: 700; line-height: 1.2; }
+    .hero-panel p, .section-head p, .project-card p, .timeline-item p, .about-card p, .contact-card p { color: var(--color-text-muted); }
+    .mini-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .mini-card { padding: 16px; background: var(--color-bg); border-radius: 16px; border: 1px solid var(--color-border); }
+    .mini-card strong { display: block; font-size: var(--text-lg); margin-bottom: 0.25rem; }
+    .mini-card span { color: var(--color-text-muted); font-size: var(--text-sm); }
+    main section { padding-block: clamp(var(--space-12), 8vw, var(--space-24)); border-top: 1px solid var(--color-divider); }
+    .section-head { display: grid; grid-template-columns: 0.55fr 1fr; gap: 24px; margin-bottom: 40px; }
+    .section-head h2 { font-family: var(--font-display); font-size: var(--text-2xl); line-height: 1; margin-bottom: 12px; }
+    .about-grid, .contact-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 24px; }
+    .about-card, .contact-card, .project-card { padding: 32px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .tag { padding: 8px 0.85rem; border-radius: 999px; background: var(--color-surface-offset); font-size: var(--text-xs); color: var(--color-text-muted); border: 1px solid var(--color-border); }
+    .projects-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+    .project-card { display: grid; gap: 20px; background: linear-gradient(180deg, var(--color-surface), var(--color-surface-2)); }
+    .project-card.featured { grid-column: span 7; min-height: 264px; }
+    .project-card.tall { grid-column: span 5; }
+    .project-card.half { grid-column: span 6; }
+    .project-card h3 { font-size: var(--text-xl); line-height: 1.05; }
+    .project-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: end; margin-top: auto; }
+    .timeline { display: grid; gap: 16px; } .timeline-item { padding: 24px; }
+    .contact-links { display: grid; gap: 12px; margin-top: 20px; }
+    .contact-link { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 20px; border-radius: 16px; background: var(--color-bg); border: 1px solid var(--color-border); }
+    .footer { padding: 32px 0 48px; color: var(--color-text-muted); font-size: var(--text-sm); }
+    [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity 700ms ease, transform 700ms ease; } [data-reveal].visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 900px) {
+      .nav-links { position: absolute; top: calc(100% + 8px); right: 16px; width: min(1128px, calc(100vw - 32px)); padding: 16px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 24px; box-shadow: var(--shadow-md); display: none; flex-direction: column; align-items: flex-start; }
+      .nav-links.open { display: flex; } .menu-toggle { display: inline-grid; } .hero-grid, .section-head, .about-grid, .contact-grid { grid-template-columns: 1fr; } .project-card.featured, .project-card.tall, .project-card.half { grid-column: span 12; } .hero { min-height: auto; padding-top: 64px; }
+    }
+    @media (max-width: 640px) { .container { width: min(calc(100% - 20px), var(--content-default)); } .hero-panel, .about-card, .contact-card, .project-card, .timeline-item { padding: 20px; } .button { width: 100%; } .mini-stats { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="header" id="top">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Cedric Tay home">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M11 24c0-8.5 5.4-14 13.3-14 4.2 0 7.8 1.4 11 4.5"/><path d="M37 24c0 8.5-5.4 14-13.3 14-4.2 0-7.8-1.4-11-4.5"/><path d="M18 24h12"/></svg>
+        <span>Cedric Tay</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+      <button class="theme-toggle" data-theme-toggle aria-label="Switch theme"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy" data-reveal>
+          <span class="eyebrow">Developer • Product Builder • IT Operations</span>
+          <h1>Building practical products toward bigger game worlds.</h1>
+          <p>I work across web development, product execution, and technical operations — turning ideas into usable systems while building toward my long-term goal of developing original games under thDream.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#projects">View selected projects</a>
+            <a class="button secondary" href="#contact">Get in touch</a>
+          </div>
+        </div>
+        <aside class="hero-panel" data-reveal>
+          <div class="hero-panel-top">
+            <div>
+              <div class="meta-label">Current role</div>
+              <div class="meta-value">IT Support Specialist</div>
+              <div class="meta-label" style="margin-top:8px;color:var(--color-text-muted);text-transform:none;letter-spacing:0;font-size:13px;">Building practical products toward original game worlds.</div>
+            </div>
+            <div class="tag">Rakuten Asia</div>
+          </div>
+          <p>Focused on bridging hands-on support, software studies, product building, and a long-term ambition to create original game experiences.</p>
+          <div class="mini-stats">
+            <div class="mini-card"><strong>3</strong><span>Featured portfolio projects</span></div>
+            <div class="mini-card"><strong>thDream</strong><span>Long-term game vision</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+    <section id="about">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div class="label">About</div>
+          <div>
+            <h2>Selected work built for everyday needs.</h2>
+            <p>I’m building products with purpose — the kind of web apps, systems, and digital experiences that support everyday needs. Right now, the focus is on sharpening that foundation through practical work, ongoing projects, and my diploma journey.</p>
+          </div>
+        </div>
+        <div class="about-grid">
+          <article class="about-card" data-reveal>
+            <h3>What I do</h3>
+            <p>I build practical digital experiences with real use in mind, from commerce flows to workflow systems. I’m most interested in products that are useful, structured well, and built to support how people actually work or buy.</p>
+            <div class="tags"><span class="tag">Web development</span><span class="tag">Product thinking</span><span class="tag">IT support</span><span class="tag">Systems mindset</span></div>
+          </article>
+          <article class="about-card" data-reveal>
+            <h3>What I’m building toward</h3>
+            <p>My ultimate goal is to create original games through thDream. The marketplace, verification, commerce, and other ongoing builds in this portfolio are part of developing the technical, product, and business foundation needed to get there.</p>
+            <div class="tags"><span class="tag">Game development</span><span class="tag">Original IP</span><span class="tag">Business building</span><span class="tag">Long-term roadmap</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section id="projects">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div class="label">Selected work</div>
+          <div>
+            <h2>Projects with real-world purpose.</h2>
+            <p>These projects reflect the kind of work I enjoy most: clear use cases, operational logic, and products that solve practical problems while helping me grow toward bigger creative goals.</p>
+          </div>
+        </div>
+        <div class="projects-grid">
+          <article class="project-card featured" data-reveal>
+            <div class="project-top">
+              <div><div class="project-type">Marketplace concept</div><h3>thDream Collectibles</h3></div>
+              <span class="tag">Pokémon card trading</span>
+            </div>
+            <p>A focused single-card trading concept starting with Pokémon cards under the wider thDream direction. The product prioritizes clarity in buying and selling, with unnecessary wishlist complexity intentionally removed.</p>
+            <div class="tags"><span class="tag">Marketplace UX</span><span class="tag">Catalog structure</span><span class="tag">Niche commerce</span></div>
+            <div class="project-footer"><span>Built as a practical business step under a broader creative brand.</span><a href="#contact" class="button secondary">Discuss the build</a></div>
+          </article>
+          <article class="project-card tall" data-reveal>
+            <div class="project-top">
+              <div><div class="project-type">Verification workflow</div><h3>Student Grant App</h3></div>
+              <span class="tag">Admin systems</span>
+            </div>
+            <p>A cross-platform grant verification concept with AI-led primary checks, admin-led secondary review, and edit-before-approval flows to reduce friction for students and staff.</p>
+            <div class="tags"><span class="tag">Workflow design</span><span class="tag">Cross-platform</span><span class="tag">Admin review</span></div>
+          </article>
+          <article class="project-card half" data-reveal>
+            <div class="project-top">
+              <div><div class="project-type">E-commerce</div><h3>Bakery Website</h3></div>
+              <span class="tag">Commerce</span>
+            </div>
+            <p>A baked goods storefront built around clear ordering, pricing, delivery logic, and a simple purchase journey, including a $15 delivery charge for orders below $80.</p>
+            <div class="tags"><span class="tag">Storefront UX</span><span class="tag">Order flow</span><span class="tag">Delivery rules</span></div>
+          </article>
+          <article class="project-card half" data-reveal>
+            <div class="project-top">
+              <div><div class="project-type">Long-term vision</div><h3>thDreamStudio</h3></div>
+              <span class="tag">Game development</span>
+            </div>
+            <p>The ultimate direction behind my work is to create my own game experiences. Every project here contributes to the technical, product, and business foundation needed to reach that goal.</p>
+            <div class="tags"><span class="tag">Original IP</span><span class="tag">World building</span><span class="tag">Product roadmap</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section id="experience">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div class="label">Experience</div>
+          <div>
+            <h2>Experience shaping reliable systems.</h2>
+            <p>My experience combines hands-on IT support with product-building ambition. It gives me a stronger understanding of reliability, workflows, and the operational side behind digital products.</p>
+          </div>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item" data-reveal><div class="timeline-top"><div><h3>IT Support Specialist — Rakuten Asia Pte Ltd</h3><p>Hands-on and remote endpoint management, hardware and software troubleshooting, and routine server room support in a regional IT environment. The role also includes device lifecycle setup, helpdesk support across Windows, macOS, Microsoft Office, and connectivity issues, inventory and asset tracking, and support for ad-hoc IT and AV projects with regional and global teams.</p></div><span class="tag">Sep 2024 — Present</span></div></article>
+          <article class="timeline-item" data-reveal><div class="timeline-top"><div><h3>Diploma in Software Engineering — Republic Polytechnic</h3><p>Building software foundations while applying them to practical web, product, and systems ideas.</p></div><span class="tag">Oct 2024 — Apr 2027</span></div></article>
+        </div>
+      </div>
+    </section>
+    <section id="contact">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div class="label">Contact</div>
+          <div>
+            <h2>Available for practical opportunities and collaborations.</h2>
+            <p>This site is meant to show the kind of work I am building now, where I am growing, and the direction I want to take long term.</p>
+          </div>
+        </div>
+        <div class="contact-grid">
+          <article class="contact-card" data-reveal>
+            <h3>Get in touch</h3>
+            <p>For collaboration, portfolio reviews, or project opportunities, these are the main points of contact.</p>
+            <div class="contact-links">
+              <a class="contact-link" href="mailto:iBkTay@gmail.com"><span>Email</span><span>iBkTay@gmail.com</span></a>
+              <div class="contact-link"><span>Phone</span><span>+65 9797 2170</span></div>
+              <div class="contact-link"><span>Location</span><span>Singapore</span></div>
+            </div>
+          </article>
+          <article class="contact-card" data-reveal>
+            <h3>Next improvements</h3>
+            <p>Most of the work here is still in progress, including the bakery website, student grant platform, gaming direction, and thDream Collectibles. The next version can develop these into clearer case studies with links, screenshots, and progress updates.</p>
+            <div class="tags"><span class="tag">Add resume download</span><span class="tag">Add project images</span><span class="tag">Add social links</span><span class="tag">Add thDream roadmap</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container">Cedric Tay — building practical products toward original game worlds.</div></footer>
+  <script>
+    const root = document.documentElement, toggle = document.querySelector('[data-theme-toggle]'), menuToggle = document.querySelector('.menu-toggle'), navLinks = document.querySelector('.nav-links'), header = document.querySelector('.header');
+    let currentTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    function setTheme(theme){ currentTheme = theme; root.setAttribute('data-theme', theme); toggle.innerHTML = theme === 'dark' ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>' : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'; }
+    setTheme(currentTheme); toggle?.addEventListener('click', ()=>setTheme(currentTheme === 'dark' ? 'light' : 'dark'));
+    menuToggle?.addEventListener('click', ()=>{ const open = navLinks.classList.toggle('open'); menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false'); });
+    document.querySelectorAll('.nav-links a').forEach(link=>link.addEventListener('click', ()=>{ navLinks.classList.remove('open'); menuToggle?.setAttribute('aria-expanded', 'false'); }));
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }), { threshold: 0.15 });
+    document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+    window.addEventListener('scroll', ()=>header.classList.toggle('scrolled', window.scrollY > 8), { passive: true });
+  </script>
+</body>
+</html>
